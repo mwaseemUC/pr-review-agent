@@ -1,0 +1,11 @@
+{
+  "id": "clean-05-tests",
+  "description": "Add parametrized tests for slugify (test-only change)",
+  "kind": "clean",
+  "language": "python",
+  "files": [
+    "tests/test_text.py"
+  ],
+  "added_lines": 32,
+  "bugs": []
+}

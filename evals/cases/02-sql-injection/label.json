@@ -1,0 +1,18 @@
+{
+  "id": "02-sql-injection",
+  "description": "Add a user search function to the users repository",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/repositories/users.py"
+  ],
+  "added_lines": 19,
+  "bugs": [
+    {
+      "file": "app/repositories/users.py",
+      "line": 43,
+      "category": "sql-injection",
+      "explanation": "User-supplied query is interpolated into the SQL string; should be a bound parameter (LIKE ? with '%' + query + '%')."
+    }
+  ]
+}

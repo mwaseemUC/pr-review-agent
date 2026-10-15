@@ -1,0 +1,18 @@
+{
+  "id": "14-closure-late-binding",
+  "description": "Register audit handlers on the event bus",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/events/bus.py"
+  ],
+  "added_lines": 15,
+  "bugs": [
+    {
+      "file": "app/events/bus.py",
+      "line": 38,
+      "category": "closure-late-binding",
+      "explanation": "The lambda closes over the loop variable, so every handler records the last event name in the list. Bind it with a default argument (lambda payload, event=event)."
+    }
+  ]
+}

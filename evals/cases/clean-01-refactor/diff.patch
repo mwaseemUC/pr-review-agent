@@ -1,0 +1,43 @@
+diff --git a/app/notifications/receipts.py b/app/notifications/receipts.py
+--- a/app/notifications/receipts.py
++++ b/app/notifications/receipts.py
+@@ -2,6 +2,8 @@
+ 
+ from dataclasses import dataclass
+ from decimal import Decimal
++
++CURRENCY_SYMBOLS = {"USD": "$", "EUR": "€", "GBP": "£"}
+ 
+ 
+ @dataclass(frozen=True)
+@@ -12,21 +14,20 @@
+     invoice_number: str
+ 
+ 
++def format_money(amount: Decimal, currency: str) -> str:
++    symbol = CURRENCY_SYMBOLS.get(currency)
++    if symbol:
++        return f"{symbol}{amount:,.2f}"
++    return f"{amount:,.2f} {currency}"
++
++
+ def receipt_subject(payment: Payment) -> str:
+-    symbol = {"USD": "$", "EUR": "€", "GBP": "£"}.get(payment.currency)
+-    if symbol:
+-        amount = f"{symbol}{payment.amount:,.2f}"
+-    else:
+-        amount = f"{payment.amount:,.2f} {payment.currency}"
++    amount = format_money(payment.amount, payment.currency)
+     return f"Receipt for {amount} (invoice {payment.invoice_number})"
+ 
+ 
+ def receipt_body(payment: Payment) -> str:
+-    symbol = {"USD": "$", "EUR": "€", "GBP": "£"}.get(payment.currency)
+-    if symbol:
+-        amount = f"{symbol}{payment.amount:,.2f}"
+-    else:
+-        amount = f"{payment.amount:,.2f} {payment.currency}"
++    amount = format_money(payment.amount, payment.currency)
+     return (
+         f"Hi {payment.customer_name},\n\n"
+         f"We received your payment of {amount} for invoice {payment.invoice_number}.\n"

@@ -1,0 +1,18 @@
+{
+  "id": "12-hardcoded-secret",
+  "description": "Add a transactional mail integration",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/integrations/mailer.py"
+  ],
+  "added_lines": 46,
+  "bugs": [
+    {
+      "file": "app/integrations/mailer.py",
+      "line": 12,
+      "category": "hardcoded-secret",
+      "explanation": "A live API key is committed as the fallback default for MAIL_API_KEY. Secrets must come only from the environment; fail if it is missing. (Key is fake.)"
+    }
+  ]
+}

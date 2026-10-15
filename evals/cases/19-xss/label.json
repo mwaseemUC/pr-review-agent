@@ -1,0 +1,18 @@
+{
+  "id": "19-xss",
+  "description": "Render post comments in the browser (JavaScript)",
+  "kind": "bug",
+  "language": "javascript",
+  "files": [
+    "src/ui/comments.js"
+  ],
+  "added_lines": 32,
+  "bugs": [
+    {
+      "file": "src/ui/comments.js",
+      "line": 40,
+      "category": "xss",
+      "explanation": "Comment author and body (user-controlled) are interpolated into innerHTML without escaping, allowing stored XSS. Build nodes with textContent instead."
+    }
+  ]
+}

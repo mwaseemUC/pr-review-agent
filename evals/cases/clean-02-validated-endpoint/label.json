@@ -1,0 +1,11 @@
+{
+  "id": "clean-02-validated-endpoint",
+  "description": "Add a create-project endpoint with input validation and conflict handling",
+  "kind": "clean",
+  "language": "python",
+  "files": [
+    "app/api/projects.py"
+  ],
+  "added_lines": 38,
+  "bugs": []
+}

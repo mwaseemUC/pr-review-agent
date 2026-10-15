@@ -1,0 +1,39 @@
+diff --git a/src/ui/comments.js b/src/ui/comments.js
+--- a/src/ui/comments.js
++++ b/src/ui/comments.js
+@@ -22,3 +22,35 @@
+   }
+   return response.json();
+ }
++
++export function renderComments(container, comments) {
++  container.replaceChildren();
++  if (comments.length === 0) {
++    const empty = document.createElement("p");
++    empty.className = "comments-empty";
++    empty.textContent = "No comments yet.";
++    container.append(empty);
++    return;
++  }
++  const list = document.createElement("ul");
++  list.className = "comment-list";
++  for (const comment of comments) {
++    const item = document.createElement("li");
++    item.className = "comment";
++    item.innerHTML = `
++      <span class="comment-author">${comment.authorName}</span>
++      <time datetime="${comment.createdAt}">${formatRelative(comment.createdAt)}</time>
++      <p class="comment-body">${comment.body}</p>`;
++    list.append(item);
++  }
++  container.append(list);
++}
++
++export async function loadComments(container, postId) {
++  container.setAttribute("aria-busy", "true");
++  try {
++    renderComments(container, await fetchComments(postId));
++  } finally {
++    container.removeAttribute("aria-busy");
++  }
++}

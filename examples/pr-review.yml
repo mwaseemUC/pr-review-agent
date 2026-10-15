@@ -1,0 +1,54 @@
+# Copy this file to .github/workflows/pr-review.yml in your repository.
+#
+# Setup:
+#   1. Add your Anthropic API key as a repository secret named ANTHROPIC_API_KEY
+#      (Settings -> Secrets and variables -> Actions -> New repository secret).
+#   2. That's it. The built-in GITHUB_TOKEN is used to read the PR and post the review.
+#
+# Notes:
+#   - Uses `pull_request`, not `pull_request_target`, so untrusted fork code never runs with
+#     your secrets. GitHub does not pass secrets to fork PRs, so those runs are skipped.
+#   - The review is posted with the COMMENT event; it never approves or blocks a PR.
+
+name: PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# Least privilege: read the code, write review comments on the PR.
+permissions:
+  contents: read
+  pull-requests: write
+
+# A new push cancels the review of the previous commit.
+concurrency:
+  group: pr-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for API key
+        id: key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::ANTHROPIC_API_KEY is not available (fork PR or unset secret); skipping review."
+          fi
+
+      - uses: mwaseemUC/pr-review-agent@v1
+        if: steps.key.outputs.present == 'true'
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Optional settings (defaults shown):
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          # model: ""                 # empty = the agent's default Claude model
+          # min_severity: medium      # critical | high | medium | low
+          # max_files: 50             # review the 50 largest changed files
+          # include_full_files: true  # send full changed files as context

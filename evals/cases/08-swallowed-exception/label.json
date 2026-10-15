@@ -1,0 +1,18 @@
+{
+  "id": "08-swallowed-exception",
+  "description": "Add a capture job to the payments worker",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/workers/payments.py"
+  ],
+  "added_lines": 13,
+  "bugs": [
+    {
+      "file": "app/workers/payments.py",
+      "line": 49,
+      "category": "swallowed-exception",
+      "explanation": "A failed capture is logged and swallowed, then the order is still marked paid and counted as captured. The failure must skip mark_paid (continue) or propagate."
+    }
+  ]
+}

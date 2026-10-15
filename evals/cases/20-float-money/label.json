@@ -1,0 +1,18 @@
+{
+  "id": "20-float-money",
+  "description": "Add invoice subtotal/tax/total computation",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/billing/invoices.py"
+  ],
+  "added_lines": 21,
+  "bugs": [
+    {
+      "file": "app/billing/invoices.py",
+      "line": 31,
+      "category": "float-money",
+      "explanation": "Decimal prices are converted to float for the arithmetic, introducing binary rounding errors (and round() uses banker's rounding on floats). Keep Decimal and quantize with ROUND_HALF_UP."
+    }
+  ]
+}

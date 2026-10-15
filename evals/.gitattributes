@@ -1,0 +1,2 @@
+# Keep generated eval inputs byte-exact (LF) on every platform.
+cases/** -text

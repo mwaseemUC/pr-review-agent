@@ -1,0 +1,18 @@
+{
+  "id": "18-unbounded-loop",
+  "description": "Add a retry helper with exponential backoff",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/clients/retry.py"
+  ],
+  "added_lines": 48,
+  "bugs": [
+    {
+      "file": "app/clients/retry.py",
+      "line": 44,
+      "category": "unbounded-loop",
+      "explanation": "attempt is never incremented, so a persistently failing call retries forever (at a constant base delay) instead of raising RetryExhausted."
+    }
+  ]
+}

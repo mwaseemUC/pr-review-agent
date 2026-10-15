@@ -1,0 +1,18 @@
+{
+  "id": "01-off-by-one",
+  "description": "Add rolling_mean and summarize_latencies to a stats module",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/metrics/stats.py"
+  ],
+  "added_lines": 20,
+  "bugs": [
+    {
+      "file": "app/metrics/stats.py",
+      "line": 30,
+      "category": "off-by-one",
+      "explanation": "range stops one short: the final window is dropped and window == len(series) returns [] instead of one value. Should be range(len(series) - window + 1)."
+    }
+  ]
+}

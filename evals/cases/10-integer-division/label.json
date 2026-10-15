@@ -1,0 +1,18 @@
+{
+  "id": "10-integer-division",
+  "description": "Add a job progress tracker with a status payload",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/jobs/progress.py"
+  ],
+  "added_lines": 40,
+  "bugs": [
+    {
+      "file": "app/jobs/progress.py",
+      "line": 30,
+      "category": "integer-division",
+      "explanation": "Floor division happens before the multiply, so percent_complete is 0 until the job finishes and then jumps to 100. Should be processed * 100 // total."
+    }
+  ]
+}

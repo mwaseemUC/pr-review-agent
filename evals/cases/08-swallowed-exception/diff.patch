@@ -1,0 +1,20 @@
+diff --git a/app/workers/payments.py b/app/workers/payments.py
+--- a/app/workers/payments.py
++++ b/app/workers/payments.py
+@@ -39,3 +39,16 @@
+         expired += 1
+     logger.info("expired %d stale authorizations", expired)
+     return expired
++
++
++def capture_pending(orders: OrderRepository, gateway: PaymentGateway) -> int:
++    captured = 0
++    for order in orders.pending_capture():
++        try:
++            gateway.capture(order.payment_intent_id, order.total_cents)
++        except Exception:
++            logger.warning("capture failed for order %s", order.id)
++        orders.mark_paid(order.id)
++        captured += 1
++    logger.info("captured %d orders", captured)
++    return captured

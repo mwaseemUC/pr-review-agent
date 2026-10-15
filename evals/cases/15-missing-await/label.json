@@ -1,0 +1,18 @@
+{
+  "id": "15-missing-await",
+  "description": "Add user registration service (TypeScript)",
+  "kind": "bug",
+  "language": "typescript",
+  "files": [
+    "src/services/signup.ts"
+  ],
+  "added_lines": 33,
+  "bugs": [
+    {
+      "file": "src/services/signup.ts",
+      "line": 55,
+      "category": "missing-await",
+      "explanation": "findByEmail returns a Promise that is not awaited; a Promise is always truthy, so every signup throws EmailTakenError."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "04-race-condition",
+  "description": "Add stock reservation to a thread-shared inventory store",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/inventory/store.py"
+  ],
+  "added_lines": 21,
+  "bugs": [
+    {
+      "file": "app/inventory/store.py",
+      "line": 36,
+      "category": "race-condition",
+      "explanation": "Stock is read and checked outside the lock, then written as current - quantity under the lock; concurrent reservations both pass the check and overwrite each other (oversell / lost update). Check and write must happen under one lock."
+    }
+  ]
+}

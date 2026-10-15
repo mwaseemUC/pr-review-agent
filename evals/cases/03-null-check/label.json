@@ -1,0 +1,18 @@
+{
+  "id": "03-null-check",
+  "description": "Add display-name and user-card helpers (TypeScript)",
+  "kind": "bug",
+  "language": "typescript",
+  "files": [
+    "src/users/display.ts"
+  ],
+  "added_lines": 31,
+  "bugs": [
+    {
+      "file": "src/users/display.ts",
+      "line": 31,
+      "category": "null-check",
+      "explanation": "profile is optional, so user.profile.nickname throws a TypeError for users without a profile; needs user.profile?.nickname."
+    }
+  ]
+}

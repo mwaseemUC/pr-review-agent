@@ -1,0 +1,28 @@
+diff --git a/app/inventory/store.py b/app/inventory/store.py
+--- a/app/inventory/store.py
++++ b/app/inventory/store.py
+@@ -28,3 +28,24 @@
+     def available(self, sku: str) -> int:
+         with self._lock:
+             return self._stock[sku]
++
++    def reserve(self, sku: str, quantity: int) -> int:
++        if quantity <= 0:
++            raise ValueError("quantity must be positive")
++        current = self.available(sku)
++        if current < quantity:
++            raise OutOfStock(sku, quantity, current)
++        with self._lock:
++            self._stock[sku] = current - quantity
++            return self._stock[sku]
++
++    def reserve_many(self, items: dict[str, int]) -> None:
++        reserved: list[tuple[str, int]] = []
++        try:
++            for sku, quantity in items.items():
++                self.reserve(sku, quantity)
++                reserved.append((sku, quantity))
++        except Exception:
++            for sku, quantity in reserved:
++                self.restock(sku, quantity)
++            raise

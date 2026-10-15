@@ -1,0 +1,40 @@
+diff --git a/src/services/signup.ts b/src/services/signup.ts
+--- a/src/services/signup.ts
++++ b/src/services/signup.ts
+@@ -31,3 +31,36 @@
+     this.name = "EmailTakenError";
+   }
+ }
++
++export interface SignupInput {
++  email: string;
++  password: string;
++  displayName?: string;
++}
++
++const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
++const MIN_PASSWORD_LENGTH = 12;
++
++export async function registerUser(
++  repo: UserRepository,
++  input: SignupInput,
++): Promise<{ id: string }> {
++  const email = input.email.trim().toLowerCase();
++  if (!EMAIL_PATTERN.test(email)) {
++    throw new ValidationError("invalid email address");
++  }
++  if (input.password.length < MIN_PASSWORD_LENGTH) {
++    throw new ValidationError(`password must be at least ${MIN_PASSWORD_LENGTH} characters`);
++  }
++  const existing = repo.findByEmail(email);
++  if (existing) {
++    throw new EmailTakenError(email);
++  }
++  const passwordHash = await hashPassword(input.password);
++  const user = await repo.insert({
++    email,
++    passwordHash,
++    displayName: input.displayName?.trim() || email.split("@")[0],
++  });
++  return { id: user.id };
++}

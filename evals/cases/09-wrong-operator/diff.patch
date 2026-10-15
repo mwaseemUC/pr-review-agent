@@ -1,0 +1,29 @@
+diff --git a/src/middleware/auth.js b/src/middleware/auth.js
+--- a/src/middleware/auth.js
++++ b/src/middleware/auth.js
+@@ -18,4 +18,24 @@
+   };
+ }
+ 
+-module.exports = { requireAuth, ROLE_RANK };
++function requireRole(minimum) {
++  if (!(minimum in ROLE_RANK)) {
++    throw new Error(`unknown role: ${minimum}`);
++  }
++  return function checkRole(req, res, next) {
++    const user = req.user;
++    if (!user) {
++      return res.status(401).json({ error: "authentication required" });
++    }
++    if (user.role = "owner") {
++      return next();
++    }
++    const rank = ROLE_RANK[user.role] ?? -1;
++    if (rank < ROLE_RANK[minimum]) {
++      return res.status(403).json({ error: "insufficient role" });
++    }
++    return next();
++  };
++}
++
++module.exports = { requireAuth, requireRole, ROLE_RANK };

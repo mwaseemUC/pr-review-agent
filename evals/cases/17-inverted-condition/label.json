@@ -1,0 +1,18 @@
+{
+  "id": "17-inverted-condition",
+  "description": "Add an LRU cache with time-based expiry",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/cache/ttl.py"
+  ],
+  "added_lines": 63,
+  "bugs": [
+    {
+      "file": "app/cache/ttl.py",
+      "line": 39,
+      "category": "inverted-condition",
+      "explanation": "Expiry check is inverted: fresh entries are evicted and returned as misses while stale entries are served forever. Should be >= self._ttl."
+    }
+  ]
+}

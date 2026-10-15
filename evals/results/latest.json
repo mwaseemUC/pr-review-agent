@@ -1,0 +1,3271 @@
+{
+  "generated_at": "2026-10-15T00:10:04.251457+00:00",
+  "meta": {
+    "run_id": "20261014T235919Z",
+    "started_at": "2026-10-14T23:59:21.029689+00:00",
+    "model": "claude-sonnet-5-5",
+    "min_severity": "medium",
+    "configs": [
+      "full",
+      "diff-only"
+    ],
+    "repeats": 3,
+    "case_ids": [
+      "01-off-by-one",
+      "02-sql-injection",
+      "03-null-check",
+      "04-race-condition",
+      "05-path-traversal",
+      "06-resource-leak",
+      "07-mutable-default",
+      "08-swallowed-exception",
+      "09-wrong-operator",
+      "10-integer-division",
+      "11-naive-datetime",
+      "12-hardcoded-secret",
+      "13-unchecked-return",
+      "14-closure-late-binding",
+      "15-missing-await",
+      "16-wrong-variable",
+      "17-inverted-condition",
+      "18-unbounded-loop",
+      "19-xss",
+      "20-float-money",
+      "clean-01-refactor",
+      "clean-02-validated-endpoint",
+      "clean-03-logging",
+      "clean-04-config",
+      "clean-05-tests"
+    ],
+    "dry_run": false
+  },
+  "total_cost_usd": 1.1738612,
+  "configs": {
+    "full": {
+      "repeats": 3,
+      "served_models": [
+        "claude-sonnet-5-5"
+      ],
+      "metrics": {
+        "catch_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "category_catch_rate": {
+          "mean": 0.7833333333333333,
+          "std": 0.028867513459481315,
+          "n": 3
+        },
+        "bugs_caught": {
+          "mean": 20.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "fp_findings_on_bug_cases": {
+          "mean": 2.6666666666666665,
+          "std": 0.5773502691896257,
+          "n": 3
+        },
+        "clean_cases_flagged": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "clean_fp_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.8922222222222222,
+          "std": 0.021169509870286256,
+          "n": 3
+        },
+        "findings_total": {
+          "mean": 24.666666666666668,
+          "std": 0.5773502691896257,
+          "n": 3
+        },
+        "input_tokens_mean": {
+          "mean": 3175.9600000000005,
+          "std": 212.28014697564151,
+          "n": 3
+        },
+        "output_tokens_mean": {
+          "mean": 497.02666666666664,
+          "std": 12.66152176214744,
+          "n": 3
+        },
+        "input_tokens_total": {
+          "mean": 79399.0,
+          "std": 5307.0036743910405,
+          "n": 3
+        },
+        "output_tokens_total": {
+          "mean": 12425.666666666666,
+          "std": 316.5380440536861,
+          "n": 3
+        },
+        "cost_usd_mean": {
+          "mean": 0.008563122666666667,
+          "std": 0.00041564492579764884,
+          "n": 3
+        },
+        "cost_usd_total": {
+          "mean": 0.21407806666666665,
+          "std": 0.01039112314494122,
+          "n": 3
+        },
+        "latency_p50_s": {
+          "mean": 4.0491339333323895,
+          "std": 0.20580720980286996,
+          "n": 3
+        },
+        "latency_p95_s": {
+          "mean": 6.947803040000387,
+          "std": 0.27390457449624916,
+          "n": 3
+        },
+        "n_errors": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "n_errors_bug": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "n_errors_clean": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        }
+      },
+      "by_category": {
+        "closure-late-binding": {
+          "caught": 3,
+          "runs": 3
+        },
+        "float-money": {
+          "caught": 3,
+          "runs": 3
+        },
+        "hardcoded-secret": {
+          "caught": 3,
+          "runs": 3
+        },
+        "integer-division": {
+          "caught": 3,
+          "runs": 3
+        },
+        "inverted-condition": {
+          "caught": 3,
+          "runs": 3
+        },
+        "missing-await": {
+          "caught": 3,
+          "runs": 3
+        },
+        "mutable-default": {
+          "caught": 3,
+          "runs": 3
+        },
+        "naive-datetime": {
+          "caught": 3,
+          "runs": 3
+        },
+        "null-check": {
+          "caught": 3,
+          "runs": 3
+        },
+        "off-by-one": {
+          "caught": 3,
+          "runs": 3
+        },
+        "path-traversal": {
+          "caught": 3,
+          "runs": 3
+        },
+        "race-condition": {
+          "caught": 3,
+          "runs": 3
+        },
+        "resource-leak": {
+          "caught": 3,
+          "runs": 3
+        },
+        "sql-injection": {
+          "caught": 3,
+          "runs": 3
+        },
+        "swallowed-exception": {
+          "caught": 3,
+          "runs": 3
+        },
+        "unbounded-loop": {
+          "caught": 3,
+          "runs": 3
+        },
+        "unchecked-return": {
+          "caught": 3,
+          "runs": 3
+        },
+        "wrong-operator": {
+          "caught": 3,
+          "runs": 3
+        },
+        "wrong-variable": {
+          "caught": 3,
+          "runs": 3
+        },
+        "xss": {
+          "caught": 3,
+          "runs": 3
+        }
+      },
+      "per_case": {
+        "01-off-by-one": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "02-sql-injection": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "03-null-check": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "04-race-condition": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            3,
+            1
+          ],
+          "unmatched": [
+            0,
+            1,
+            0
+          ],
+          "errors": []
+        },
+        "05-path-traversal": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "06-resource-leak": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            2,
+            2
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "07-mutable-default": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            2,
+            2
+          ],
+          "unmatched": [
+            1,
+            1,
+            1
+          ],
+          "errors": []
+        },
+        "08-swallowed-exception": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "09-wrong-operator": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            2,
+            1,
+            1
+          ],
+          "unmatched": [
+            1,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "10-integer-division": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "11-naive-datetime": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "12-hardcoded-secret": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "13-unchecked-return": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            2
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "14-closure-late-binding": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 2,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "15-missing-await": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "16-wrong-variable": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "17-inverted-condition": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "18-unbounded-loop": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "19-xss": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "20-float-money": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            2,
+            2
+          ],
+          "unmatched": [
+            1,
+            1,
+            1
+          ],
+          "errors": []
+        },
+        "clean-01-refactor": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "clean-02-validated-endpoint": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "clean-03-logging": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "clean-04-config": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "clean-05-tests": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        }
+      },
+      "per_repeat": [
+        {
+          "n_cases": 25,
+          "n_bug_cases": 20,
+          "n_clean_cases": 5,
+          "n_errors": 0,
+          "n_errors_bug": 0,
+          "n_errors_clean": 0,
+          "bugs_total": 20,
+          "bugs_caught": 20,
+          "catch_rate": 1.0,
+          "category_catch_rate": 0.75,
+          "fp_findings_on_bug_cases": 3,
+          "clean_cases_flagged": 0,
+          "clean_fp_rate": 0.0,
+          "findings_total": 25,
+          "findings_matched": 22,
+          "precision": 0.88,
+          "input_tokens_total": 76335,
+          "output_tokens_total": 12420,
+          "input_tokens_mean": 3053.4,
+          "output_tokens_mean": 496.8,
+          "cost_usd_total": 0.20968499999999998,
+          "cost_usd_mean": 0.0083874,
+          "latency_p50_s": 4.246492099999159,
+          "latency_p95_s": 6.850550980002299,
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "caught_by_category": {
+            "off-by-one": true,
+            "sql-injection": true,
+            "null-check": true,
+            "race-condition": true,
+            "path-traversal": true,
+            "resource-leak": true,
+            "mutable-default": true,
+            "swallowed-exception": true,
+            "wrong-operator": true,
+            "integer-division": true,
+            "naive-datetime": true,
+            "hardcoded-secret": true,
+            "unchecked-return": true,
+            "closure-late-binding": true,
+            "missing-await": true,
+            "wrong-variable": true,
+            "inverted-condition": true,
+            "unbounded-loop": true,
+            "xss": true,
+            "float-money": true
+          },
+          "per_case": {
+            "01-off-by-one": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "02-sql-injection": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "03-null-check": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "04-race-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "05-path-traversal": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "06-resource-leak": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "07-mutable-default": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "08-swallowed-exception": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "09-wrong-operator": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "10-integer-division": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "11-naive-datetime": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "12-hardcoded-secret": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "13-unchecked-return": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "14-closure-late-binding": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "15-missing-await": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "16-wrong-variable": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "17-inverted-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "18-unbounded-loop": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "19-xss": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "20-float-money": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "clean-01-refactor": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-02-validated-endpoint": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-03-logging": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-04-config": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-05-tests": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            }
+          }
+        },
+        {
+          "n_cases": 25,
+          "n_bug_cases": 20,
+          "n_clean_cases": 5,
+          "n_errors": 0,
+          "n_errors_bug": 0,
+          "n_errors_clean": 0,
+          "bugs_total": 20,
+          "bugs_caught": 20,
+          "catch_rate": 1.0,
+          "category_catch_rate": 0.8,
+          "fp_findings_on_bug_cases": 3,
+          "clean_cases_flagged": 0,
+          "clean_fp_rate": 0.0,
+          "findings_total": 25,
+          "findings_matched": 22,
+          "precision": 0.88,
+          "input_tokens_total": 76335,
+          "output_tokens_total": 12112,
+          "input_tokens_mean": 3053.4,
+          "output_tokens_mean": 484.48,
+          "cost_usd_total": 0.206605,
+          "cost_usd_mean": 0.008264200000000001,
+          "latency_p50_s": 3.835807899999054,
+          "latency_p95_s": 6.73579475999868,
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "caught_by_category": {
+            "off-by-one": true,
+            "sql-injection": true,
+            "null-check": true,
+            "race-condition": true,
+            "path-traversal": true,
+            "resource-leak": true,
+            "mutable-default": true,
+            "swallowed-exception": true,
+            "wrong-operator": true,
+            "integer-division": true,
+            "naive-datetime": true,
+            "hardcoded-secret": true,
+            "unchecked-return": true,
+            "closure-late-binding": true,
+            "missing-await": true,
+            "wrong-variable": true,
+            "inverted-condition": true,
+            "unbounded-loop": true,
+            "xss": true,
+            "float-money": true
+          },
+          "per_case": {
+            "01-off-by-one": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "02-sql-injection": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "03-null-check": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "04-race-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 3,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "05-path-traversal": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "06-resource-leak": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "07-mutable-default": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "08-swallowed-exception": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "09-wrong-operator": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "10-integer-division": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "11-naive-datetime": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "12-hardcoded-secret": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "13-unchecked-return": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "14-closure-late-binding": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "15-missing-await": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "16-wrong-variable": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "17-inverted-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "18-unbounded-loop": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "19-xss": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "20-float-money": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "clean-01-refactor": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-02-validated-endpoint": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-03-logging": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-04-config": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-05-tests": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            }
+          }
+        },
+        {
+          "n_cases": 25,
+          "n_bug_cases": 20,
+          "n_clean_cases": 5,
+          "n_errors": 0,
+          "n_errors_bug": 0,
+          "n_errors_clean": 0,
+          "bugs_total": 20,
+          "bugs_caught": 20,
+          "catch_rate": 1.0,
+          "category_catch_rate": 0.8,
+          "fp_findings_on_bug_cases": 2,
+          "clean_cases_flagged": 0,
+          "clean_fp_rate": 0.0,
+          "findings_total": 24,
+          "findings_matched": 22,
+          "precision": 0.9166666666666666,
+          "input_tokens_total": 85527,
+          "output_tokens_total": 12745,
+          "input_tokens_mean": 3421.08,
+          "output_tokens_mean": 509.8,
+          "cost_usd_total": 0.22594419999999998,
+          "cost_usd_mean": 0.009037768,
+          "latency_p50_s": 4.065101799998956,
+          "latency_p95_s": 7.257063380000182,
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "caught_by_category": {
+            "off-by-one": true,
+            "sql-injection": true,
+            "null-check": true,
+            "race-condition": true,
+            "path-traversal": true,
+            "resource-leak": true,
+            "mutable-default": true,
+            "swallowed-exception": true,
+            "wrong-operator": true,
+            "integer-division": true,
+            "naive-datetime": true,
+            "hardcoded-secret": true,
+            "unchecked-return": true,
+            "closure-late-binding": true,
+            "missing-await": true,
+            "wrong-variable": true,
+            "inverted-condition": true,
+            "unbounded-loop": true,
+            "xss": true,
+            "float-money": true
+          },
+          "per_case": {
+            "01-off-by-one": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "02-sql-injection": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "03-null-check": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "04-race-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "05-path-traversal": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "06-resource-leak": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "07-mutable-default": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "08-swallowed-exception": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "09-wrong-operator": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "10-integer-division": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "11-naive-datetime": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "12-hardcoded-secret": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "13-unchecked-return": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "14-closure-late-binding": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "15-missing-await": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "16-wrong-variable": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "17-inverted-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "18-unbounded-loop": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "19-xss": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "20-float-money": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "clean-01-refactor": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-02-validated-endpoint": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-03-logging": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-04-config": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-05-tests": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            }
+          }
+        }
+      ]
+    },
+    "diff-only": {
+      "repeats": 3,
+      "served_models": [
+        "claude-sonnet-5-5"
+      ],
+      "metrics": {
+        "catch_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "category_catch_rate": {
+          "mean": 0.7000000000000001,
+          "std": 0.04999999999999999,
+          "n": 3
+        },
+        "bugs_caught": {
+          "mean": 20.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "fp_findings_on_bug_cases": {
+          "mean": 5.333333333333333,
+          "std": 1.5275252316519468,
+          "n": 3
+        },
+        "clean_cases_flagged": {
+          "mean": 0.3333333333333333,
+          "std": 0.5773502691896257,
+          "n": 3
+        },
+        "clean_fp_rate": {
+          "mean": 0.06666666666666667,
+          "std": 0.11547005383792516,
+          "n": 3
+        },
+        "precision": {
+          "mean": 0.7893772893772893,
+          "std": 0.0678150497493539,
+          "n": 3
+        },
+        "findings_total": {
+          "mean": 26.666666666666668,
+          "std": 1.1547005383792515,
+          "n": 3
+        },
+        "input_tokens_mean": {
+          "mean": 2313.88,
+          "std": 0.0,
+          "n": 3
+        },
+        "output_tokens_mean": {
+          "mean": 514.8000000000001,
+          "std": 11.475748341611556,
+          "n": 3
+        },
+        "input_tokens_total": {
+          "mean": 57847.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "output_tokens_total": {
+          "mean": 12870.0,
+          "std": 286.8937085402885,
+          "n": 3
+        },
+        "cost_usd_mean": {
+          "mean": 0.007088359999999999,
+          "std": 0.00011475748341611401,
+          "n": 3
+        },
+        "cost_usd_total": {
+          "mean": 0.17720900000000003,
+          "std": 0.0028689370854028478,
+          "n": 3
+        },
+        "latency_p50_s": {
+          "mean": 4.087690266667778,
+          "std": 0.19991351908523236,
+          "n": 3
+        },
+        "latency_p95_s": {
+          "mean": 6.242030979999254,
+          "std": 0.2608789100674537,
+          "n": 3
+        },
+        "n_errors": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "n_errors_bug": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "n_errors_clean": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        }
+      },
+      "by_category": {
+        "closure-late-binding": {
+          "caught": 3,
+          "runs": 3
+        },
+        "float-money": {
+          "caught": 3,
+          "runs": 3
+        },
+        "hardcoded-secret": {
+          "caught": 3,
+          "runs": 3
+        },
+        "integer-division": {
+          "caught": 3,
+          "runs": 3
+        },
+        "inverted-condition": {
+          "caught": 3,
+          "runs": 3
+        },
+        "missing-await": {
+          "caught": 3,
+          "runs": 3
+        },
+        "mutable-default": {
+          "caught": 3,
+          "runs": 3
+        },
+        "naive-datetime": {
+          "caught": 3,
+          "runs": 3
+        },
+        "null-check": {
+          "caught": 3,
+          "runs": 3
+        },
+        "off-by-one": {
+          "caught": 3,
+          "runs": 3
+        },
+        "path-traversal": {
+          "caught": 3,
+          "runs": 3
+        },
+        "race-condition": {
+          "caught": 3,
+          "runs": 3
+        },
+        "resource-leak": {
+          "caught": 3,
+          "runs": 3
+        },
+        "sql-injection": {
+          "caught": 3,
+          "runs": 3
+        },
+        "swallowed-exception": {
+          "caught": 3,
+          "runs": 3
+        },
+        "unbounded-loop": {
+          "caught": 3,
+          "runs": 3
+        },
+        "unchecked-return": {
+          "caught": 3,
+          "runs": 3
+        },
+        "wrong-operator": {
+          "caught": 3,
+          "runs": 3
+        },
+        "wrong-variable": {
+          "caught": 3,
+          "runs": 3
+        },
+        "xss": {
+          "caught": 3,
+          "runs": 3
+        }
+      },
+      "per_case": {
+        "01-off-by-one": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "02-sql-injection": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "03-null-check": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            2
+          ],
+          "unmatched": [
+            0,
+            0,
+            1
+          ],
+          "errors": []
+        },
+        "04-race-condition": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            2,
+            2
+          ],
+          "unmatched": [
+            1,
+            1,
+            1
+          ],
+          "errors": []
+        },
+        "05-path-traversal": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "06-resource-leak": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "07-mutable-default": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            2,
+            2
+          ],
+          "unmatched": [
+            1,
+            1,
+            1
+          ],
+          "errors": []
+        },
+        "08-swallowed-exception": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "09-wrong-operator": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "10-integer-division": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "11-naive-datetime": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            2,
+            2,
+            1
+          ],
+          "unmatched": [
+            1,
+            1,
+            0
+          ],
+          "errors": []
+        },
+        "12-hardcoded-secret": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            2,
+            1
+          ],
+          "unmatched": [
+            0,
+            1,
+            0
+          ],
+          "errors": []
+        },
+        "13-unchecked-return": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            1,
+            2
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "14-closure-late-binding": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 1,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "15-missing-await": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            2,
+            2,
+            2
+          ],
+          "unmatched": [
+            1,
+            1,
+            1
+          ],
+          "errors": []
+        },
+        "16-wrong-variable": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "17-inverted-condition": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "18-unbounded-loop": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 0,
+          "findings": [
+            1,
+            1,
+            1
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "19-xss": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 3,
+          "findings": [
+            1,
+            2,
+            1
+          ],
+          "unmatched": [
+            0,
+            1,
+            0
+          ],
+          "errors": []
+        },
+        "20-float-money": {
+          "kind": "bug",
+          "runs": 3,
+          "caught": 3,
+          "category_caught": 2,
+          "findings": [
+            2,
+            2,
+            2
+          ],
+          "unmatched": [
+            0,
+            1,
+            1
+          ],
+          "errors": []
+        },
+        "clean-01-refactor": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "clean-02-validated-endpoint": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "clean-03-logging": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        },
+        "clean-04-config": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            1,
+            0
+          ],
+          "unmatched": [
+            0,
+            1,
+            0
+          ],
+          "errors": []
+        },
+        "clean-05-tests": {
+          "kind": "clean",
+          "runs": 3,
+          "caught": 0,
+          "category_caught": 0,
+          "findings": [
+            0,
+            0,
+            0
+          ],
+          "unmatched": [
+            0,
+            0,
+            0
+          ],
+          "errors": []
+        }
+      },
+      "per_repeat": [
+        {
+          "n_cases": 25,
+          "n_bug_cases": 20,
+          "n_clean_cases": 5,
+          "n_errors": 0,
+          "n_errors_bug": 0,
+          "n_errors_clean": 0,
+          "bugs_total": 20,
+          "bugs_caught": 20,
+          "catch_rate": 1.0,
+          "category_catch_rate": 0.7,
+          "fp_findings_on_bug_cases": 4,
+          "clean_cases_flagged": 0,
+          "clean_fp_rate": 0.0,
+          "findings_total": 26,
+          "findings_matched": 22,
+          "precision": 0.8461538461538461,
+          "input_tokens_total": 57847,
+          "output_tokens_total": 12758,
+          "input_tokens_mean": 2313.88,
+          "output_tokens_mean": 510.32,
+          "cost_usd_total": 0.17608900000000002,
+          "cost_usd_mean": 0.007043560000000001,
+          "latency_p50_s": 3.967017900002247,
+          "latency_p95_s": 6.401622640001006,
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "caught_by_category": {
+            "off-by-one": true,
+            "sql-injection": true,
+            "null-check": true,
+            "race-condition": true,
+            "path-traversal": true,
+            "resource-leak": true,
+            "mutable-default": true,
+            "swallowed-exception": true,
+            "wrong-operator": true,
+            "integer-division": true,
+            "naive-datetime": true,
+            "hardcoded-secret": true,
+            "unchecked-return": true,
+            "closure-late-binding": true,
+            "missing-await": true,
+            "wrong-variable": true,
+            "inverted-condition": true,
+            "unbounded-loop": true,
+            "xss": true,
+            "float-money": true
+          },
+          "per_case": {
+            "01-off-by-one": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "02-sql-injection": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "03-null-check": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "04-race-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "05-path-traversal": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "06-resource-leak": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "07-mutable-default": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "08-swallowed-exception": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "09-wrong-operator": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "10-integer-division": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "11-naive-datetime": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "12-hardcoded-secret": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "13-unchecked-return": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "14-closure-late-binding": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "15-missing-await": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "16-wrong-variable": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "17-inverted-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "18-unbounded-loop": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "19-xss": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "20-float-money": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-01-refactor": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-02-validated-endpoint": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-03-logging": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-04-config": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-05-tests": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            }
+          }
+        },
+        {
+          "n_cases": 25,
+          "n_bug_cases": 20,
+          "n_clean_cases": 5,
+          "n_errors": 0,
+          "n_errors_bug": 0,
+          "n_errors_clean": 0,
+          "bugs_total": 20,
+          "bugs_caught": 20,
+          "catch_rate": 1.0,
+          "category_catch_rate": 0.65,
+          "fp_findings_on_bug_cases": 7,
+          "clean_cases_flagged": 1,
+          "clean_fp_rate": 0.2,
+          "findings_total": 28,
+          "findings_matched": 20,
+          "precision": 0.7142857142857143,
+          "input_tokens_total": 57847,
+          "output_tokens_total": 12656,
+          "input_tokens_mean": 2313.88,
+          "output_tokens_mean": 506.24,
+          "cost_usd_total": 0.17506900000000003,
+          "cost_usd_mean": 0.007002760000000001,
+          "latency_p50_s": 4.31844959999944,
+          "latency_p95_s": 5.94097583999901,
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "caught_by_category": {
+            "off-by-one": true,
+            "sql-injection": true,
+            "null-check": true,
+            "race-condition": true,
+            "path-traversal": true,
+            "resource-leak": true,
+            "mutable-default": true,
+            "swallowed-exception": true,
+            "wrong-operator": true,
+            "integer-division": true,
+            "naive-datetime": true,
+            "hardcoded-secret": true,
+            "unchecked-return": true,
+            "closure-late-binding": true,
+            "missing-await": true,
+            "wrong-variable": true,
+            "inverted-condition": true,
+            "unbounded-loop": true,
+            "xss": true,
+            "float-money": true
+          },
+          "per_case": {
+            "01-off-by-one": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "02-sql-injection": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "03-null-check": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "04-race-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "05-path-traversal": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "06-resource-leak": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "07-mutable-default": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "08-swallowed-exception": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "09-wrong-operator": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "10-integer-division": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "11-naive-datetime": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "12-hardcoded-secret": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "13-unchecked-return": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "14-closure-late-binding": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "15-missing-await": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "16-wrong-variable": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "17-inverted-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "18-unbounded-loop": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "19-xss": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "20-float-money": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "clean-01-refactor": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-02-validated-endpoint": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-03-logging": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-04-config": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 1,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "clean-05-tests": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            }
+          }
+        },
+        {
+          "n_cases": 25,
+          "n_bug_cases": 20,
+          "n_clean_cases": 5,
+          "n_errors": 0,
+          "n_errors_bug": 0,
+          "n_errors_clean": 0,
+          "bugs_total": 20,
+          "bugs_caught": 20,
+          "catch_rate": 1.0,
+          "category_catch_rate": 0.75,
+          "fp_findings_on_bug_cases": 5,
+          "clean_cases_flagged": 0,
+          "clean_fp_rate": 0.0,
+          "findings_total": 26,
+          "findings_matched": 21,
+          "precision": 0.8076923076923077,
+          "input_tokens_total": 57847,
+          "output_tokens_total": 13196,
+          "input_tokens_mean": 2313.88,
+          "output_tokens_mean": 527.84,
+          "cost_usd_total": 0.18046899999999996,
+          "cost_usd_mean": 0.0072187599999999985,
+          "latency_p50_s": 3.977603300001647,
+          "latency_p95_s": 6.383494459997746,
+          "served_models": [
+            "claude-sonnet-5-5"
+          ],
+          "caught_by_category": {
+            "off-by-one": true,
+            "sql-injection": true,
+            "null-check": true,
+            "race-condition": true,
+            "path-traversal": true,
+            "resource-leak": true,
+            "mutable-default": true,
+            "swallowed-exception": true,
+            "wrong-operator": true,
+            "integer-division": true,
+            "naive-datetime": true,
+            "hardcoded-secret": true,
+            "unchecked-return": true,
+            "closure-late-binding": true,
+            "missing-await": true,
+            "wrong-variable": true,
+            "inverted-condition": true,
+            "unbounded-loop": true,
+            "xss": true,
+            "float-money": true
+          },
+          "per_case": {
+            "01-off-by-one": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "02-sql-injection": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "03-null-check": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "04-race-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "05-path-traversal": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "06-resource-leak": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "07-mutable-default": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "08-swallowed-exception": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "09-wrong-operator": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "10-integer-division": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "11-naive-datetime": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "12-hardcoded-secret": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "13-unchecked-return": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "14-closure-late-binding": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "15-missing-await": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "16-wrong-variable": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "17-inverted-condition": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "18-unbounded-loop": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                false
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "19-xss": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 1,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "20-float-money": {
+              "kind": "bug",
+              "caught": [
+                true
+              ],
+              "category_caught": [
+                true
+              ],
+              "n_findings": 2,
+              "n_unmatched": 1,
+              "error": null
+            },
+            "clean-01-refactor": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-02-validated-endpoint": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-03-logging": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-04-config": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            },
+            "clean-05-tests": {
+              "kind": "clean",
+              "caught": [],
+              "category_caught": [],
+              "n_findings": 0,
+              "n_unmatched": 0,
+              "error": null
+            }
+          }
+        }
+      ]
+    }
+  }
+}

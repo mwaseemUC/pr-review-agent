@@ -1,0 +1,18 @@
+{
+  "id": "05-path-traversal",
+  "description": "Add download and usage endpoints to an attachments blueprint",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/api/attachments.py"
+  ],
+  "added_lines": 22,
+  "bugs": [
+    {
+      "file": "app/api/attachments.py",
+      "line": 34,
+      "category": "path-traversal",
+      "explanation": "filename comes from the URL (<path:...>) and is joined without normalising or checking it stays under the storage root, so ../ sequences read arbitrary files. Use send_from_directory / safe_join or resolve() and check is_relative_to(root)."
+    }
+  ]
+}

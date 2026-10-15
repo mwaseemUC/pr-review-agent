@@ -1,0 +1,18 @@
+{
+  "id": "07-mutable-default",
+  "description": "Add a billing API client with shared header builder",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/clients/billing.py"
+  ],
+  "added_lines": 47,
+  "bugs": [
+    {
+      "file": "app/clients/billing.py",
+      "line": 8,
+      "category": "mutable-default",
+      "explanation": "extra defaults to a shared dict that is then mutated and returned, so every call without extra returns the same object; concurrent clients can send each other's Authorization header. Use None and build a new dict."
+    }
+  ]
+}

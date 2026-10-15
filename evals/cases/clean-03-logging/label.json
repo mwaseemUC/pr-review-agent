@@ -1,0 +1,11 @@
+{
+  "id": "clean-03-logging",
+  "description": "Add structured logging and timing to the contact sync worker",
+  "kind": "clean",
+  "language": "python",
+  "files": [
+    "app/workers/contact_sync.py"
+  ],
+  "added_lines": 25,
+  "bugs": []
+}

@@ -1,0 +1,11 @@
+{
+  "id": "clean-01-refactor",
+  "description": "Extract duplicated currency formatting into a helper (no behaviour change)",
+  "kind": "clean",
+  "language": "python",
+  "files": [
+    "app/notifications/receipts.py"
+  ],
+  "added_lines": 11,
+  "bugs": []
+}

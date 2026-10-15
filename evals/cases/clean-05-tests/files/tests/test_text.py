@@ -1,0 +1,37 @@
+import pytest
+
+from app.text import slugify
+
+
+def test_lowercases_and_hyphenates():
+    assert slugify("Hello World") == "hello-world"
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("  padded  ", "padded"),
+        ("multiple   spaces", "multiple-spaces"),
+        ("Already-Slugged", "already-slugged"),
+        ("punctuation, removed!", "punctuation-removed"),
+        ("trailing---hyphens---", "trailing-hyphens"),
+        ("Café au lait", "cafe-au-lait"),
+    ],
+)
+def test_normalizes_input(raw: str, expected: str) -> None:
+    assert slugify(raw) == expected
+
+
+def test_empty_string_stays_empty() -> None:
+    assert slugify("") == ""
+
+
+def test_respects_max_length_without_trailing_hyphen() -> None:
+    slug = slugify("a very long title that keeps going", max_length=12)
+    assert len(slug) <= 12
+    assert not slug.endswith("-")
+
+
+def test_rejects_non_positive_max_length() -> None:
+    with pytest.raises(ValueError):
+        slugify("anything", max_length=0)

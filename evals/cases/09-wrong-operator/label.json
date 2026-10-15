@@ -1,0 +1,18 @@
+{
+  "id": "09-wrong-operator",
+  "description": "Add role-based authorization middleware (JavaScript)",
+  "kind": "bug",
+  "language": "javascript",
+  "files": [
+    "src/middleware/auth.js"
+  ],
+  "added_lines": 21,
+  "bugs": [
+    {
+      "file": "src/middleware/auth.js",
+      "line": 30,
+      "category": "wrong-operator",
+      "explanation": "Assignment instead of comparison: the condition is always truthy, so every authenticated user is treated as owner and bypasses the role check. Use ===."
+    }
+  ]
+}

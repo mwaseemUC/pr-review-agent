@@ -1,0 +1,18 @@
+{
+  "id": "11-naive-datetime",
+  "description": "Add active/remaining/renew helpers to subscriptions",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/billing/subscriptions.py"
+  ],
+  "added_lines": 23,
+  "bugs": [
+    {
+      "file": "app/billing/subscriptions.py",
+      "line": 37,
+      "category": "naive-datetime",
+      "explanation": "datetime.now() is naive while expires_at is timezone-aware, so the comparison raises TypeError (and would use local time even if it did not). Use datetime.now(timezone.utc) like the rest of the module."
+    }
+  ]
+}

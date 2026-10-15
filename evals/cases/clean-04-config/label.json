@@ -1,0 +1,11 @@
+{
+  "id": "clean-04-config",
+  "description": "Load typed, validated settings from the environment",
+  "kind": "clean",
+  "language": "python",
+  "files": [
+    "app/config.py"
+  ],
+  "added_lines": 53,
+  "bugs": []
+}

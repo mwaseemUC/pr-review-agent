@@ -1,0 +1,18 @@
+{
+  "id": "16-wrong-variable",
+  "description": "Add a date-range report endpoint",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/api/reports.py"
+  ],
+  "added_lines": 27,
+  "bugs": [
+    {
+      "file": "app/api/reports.py",
+      "line": 20,
+      "category": "wrong-variable",
+      "explanation": "end is parsed from the 'start' parameter, so the 'end' query parameter is ignored and every report covers a single day."
+    }
+  ]
+}

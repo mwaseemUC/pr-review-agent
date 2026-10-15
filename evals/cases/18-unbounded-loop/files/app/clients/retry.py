@@ -1,0 +1,48 @@
+from __future__ import annotations
+
+import logging
+import time
+from collections.abc import Callable
+from dataclasses import dataclass
+from typing import TypeVar
+
+logger = logging.getLogger(__name__)
+
+T = TypeVar("T")
+
+
+class TransientError(Exception):
+    """Raised by callers for failures that are safe to retry (timeouts, 502/503/504)."""
+
+
+class RetryExhausted(Exception):
+    pass
+
+
+@dataclass(frozen=True)
+class RetryPolicy:
+    max_attempts: int = 5
+    base_delay: float = 0.2
+    max_delay: float = 5.0
+
+    def delay_for(self, attempt: int) -> float:
+        return min(self.max_delay, self.base_delay * 2**attempt)
+
+
+def call_with_retry(
+    fn: Callable[[], T],
+    policy: RetryPolicy | None = None,
+    *,
+    sleep: Callable[[float], None] = time.sleep,
+) -> T:
+    policy = policy or RetryPolicy()
+    attempt = 0
+    last_error: TransientError | None = None
+    while attempt < policy.max_attempts:
+        try:
+            return fn()
+        except TransientError as exc:
+            last_error = exc
+            logger.warning("attempt %d failed, retrying: %s", attempt + 1, exc)
+            sleep(policy.delay_for(attempt))
+    raise RetryExhausted(f"gave up after {policy.max_attempts} attempts") from last_error

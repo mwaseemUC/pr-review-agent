@@ -1,0 +1,63 @@
+from __future__ import annotations
+
+import time
+from collections import OrderedDict
+from collections.abc import Callable, Hashable
+from dataclasses import dataclass
+from typing import Any, Generic, TypeVar
+
+K = TypeVar("K", bound=Hashable)
+V = TypeVar("V")
+
+_MISSING: Any = object()
+
+
+@dataclass
+class _Entry(Generic[V]):
+    value: V
+    stored_at: float
+
+
+class TTLCache(Generic[K, V]):
+    def __init__(
+        self,
+        ttl_seconds: float,
+        maxsize: int = 1024,
+        clock: Callable[[], float] = time.monotonic,
+    ) -> None:
+        if ttl_seconds <= 0 or maxsize <= 0:
+            raise ValueError("ttl_seconds and maxsize must be positive")
+        self._ttl = ttl_seconds
+        self._maxsize = maxsize
+        self._clock = clock
+        self._data: OrderedDict[K, _Entry[V]] = OrderedDict()
+
+    def _lookup(self, key: K) -> Any:
+        entry = self._data.get(key)
+        if entry is None:
+            return _MISSING
+        if self._clock() - entry.stored_at < self._ttl:
+            del self._data[key]
+            return _MISSING
+        self._data.move_to_end(key)
+        return entry.value
+
+    def get(self, key: K, default: V | None = None) -> V | None:
+        value = self._lookup(key)
+        return default if value is _MISSING else value
+
+    def set(self, key: K, value: V) -> None:
+        self._data[key] = _Entry(value, self._clock())
+        self._data.move_to_end(key)
+        while len(self._data) > self._maxsize:
+            self._data.popitem(last=False)
+
+    def get_or_load(self, key: K, loader: Callable[[K], V]) -> V:
+        value = self._lookup(key)
+        if value is _MISSING:
+            value = loader(key)
+            self.set(key, value)
+        return value
+
+    def __len__(self) -> int:
+        return len(self._data)

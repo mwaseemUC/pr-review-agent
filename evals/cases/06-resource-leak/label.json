@@ -1,0 +1,18 @@
+{
+  "id": "06-resource-leak",
+  "description": "Add a daily totals query to the report repository",
+  "kind": "bug",
+  "language": "python",
+  "files": [
+    "app/reports/repository.py"
+  ],
+  "added_lines": 23,
+  "bugs": [
+    {
+      "file": "app/reports/repository.py",
+      "line": 43,
+      "category": "resource-leak",
+      "explanation": "The early return for empty results (and any exception from the query) skips putconn, leaking a pooled connection until the pool is exhausted. Needs try/finally like order_count."
+    }
+  ]
+}

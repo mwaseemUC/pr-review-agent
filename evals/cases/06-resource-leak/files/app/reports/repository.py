@@ -1,0 +1,52 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from datetime import date
+
+from psycopg2.extensions import connection
+from psycopg2.pool import SimpleConnectionPool
+
+_ORDER_COUNT_SQL = "SELECT count(*) FROM orders WHERE created_at::date = %s"
+
+_DAILY_TOTALS_SQL = (
+    "SELECT created_at::date AS day, count(*), coalesce(sum(total_cents), 0) "
+    "FROM orders WHERE created_at::date BETWEEN %s AND %s "
+    "GROUP BY day ORDER BY day"
+)
+
+
+@dataclass(frozen=True)
+class DailyTotal:
+    day: date
+    orders: int
+    revenue_cents: int
+
+
+class ReportRepository:
+    def __init__(self, pool: SimpleConnectionPool) -> None:
+        self._pool = pool
+
+    def order_count(self, day: date) -> int:
+        conn = self._pool.getconn()
+        try:
+            with conn.cursor() as cur:
+                cur.execute(_ORDER_COUNT_SQL, (day,))
+                return cur.fetchone()[0]
+        finally:
+            self._pool.putconn(conn)
+
+    def daily_totals(self, start: date, end: date) -> list[DailyTotal]:
+        if start > end:
+            raise ValueError("start must be on or before end")
+        conn = self._pool.getconn()
+        rows = self._fetch_daily_rows(conn, start, end)
+        if not rows:
+            return []
+        self._pool.putconn(conn)
+        return [DailyTotal(day=r[0], orders=r[1], revenue_cents=r[2]) for r in rows]
+
+    @staticmethod
+    def _fetch_daily_rows(conn: connection, start: date, end: date) -> list[tuple]:
+        with conn.cursor() as cur:
+            cur.execute(_DAILY_TOTALS_SQL, (start, end))
+            return cur.fetchall()
