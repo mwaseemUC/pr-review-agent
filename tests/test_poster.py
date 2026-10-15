@@ -78,6 +78,17 @@ def test_inline_comment_has_badge_category_issue_suggestion_and_marker() -> None
         ("Use `cursor.execute(sql, params)` instead.", "**Suggested fix:** Use", "```"),
         ("Add a None check: if user is None", "**Suggested fix:** Add", "```"),
         ("User user = new User();", "```suggestion\nUser user = new User();\n```", None),
+        (
+            '        f"WHERE customer_email = ? ORDER BY id DESC",\n        (email,),',
+            '**Suggested fix:**\n\n```\n        f"WHERE customer_email = ? ORDER BY id DESC",\n'
+            "        (email,),\n```",
+            "```suggestion",
+        ),
+        (
+            "Bind the value instead:\nconn.execute(sql, (email,))",
+            "**Suggested fix:** Bind",
+            "```",
+        ),
     ],
     ids=[
         "multiline-code",
@@ -91,6 +102,8 @@ def test_inline_comment_has_badge_category_issue_suggestion_and_marker() -> None
         "prose-with-inline-code",
         "prose-with-colon",
         "java-declaration",
+        "unfenced-multiline-code",
+        "multiline-prose-then-code",
     ],
 )
 def test_fix_rendering(fix: str, expected: str, absent: str | None) -> None:

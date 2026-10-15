@@ -121,7 +121,8 @@ def _extract_code(fix: str) -> str | None:
     match = _FENCED.match(fix.strip())
     if match:
         return match.group("code").strip("\n").rstrip()
-    if "\n" not in fix and _looks_like_code(fix):
+    lines = [line for line in fix.split("\n") if line.strip()]
+    if lines and all(_looks_like_code(line) for line in lines):
         return fix
     return None
 
@@ -138,7 +139,7 @@ def _looks_like_prose(text: str) -> bool:
         return True
     if text.endswith((".", "!", "?")) and len(text.split()) >= 3:
         return True
-    return bool(_SENTENCE_START.match(text)) and not text.endswith((";", "{", ")", ":", ","))
+    return bool(_SENTENCE_START.match(text)) and not text.endswith((";", "{", ")", ","))
 
 
 def _is_drop_in(code: str) -> bool:

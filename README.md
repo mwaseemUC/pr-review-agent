@@ -18,8 +18,11 @@ Both configs caught all 20 bugs on every repeat, so this benchmark cannot tell t
 What separates them is noise: sending the full changed files halves the unmatched findings for
 +$0.0015 per PR (+21%). The full eval run (150 reviews) cost $1.17.
 
-<!-- TODO: screenshot from demo PR -->
 ![Inline review comments posted by pr-review-agent](docs/screenshot-inline-comments.png)
+
+A real run on [demo PR #1](https://github.com/mwaseemUC/pr-review-agent/pull/1): both planted bugs
+flagged on the right lines, one with a one-click suggested change. 2,816 input / 481 output tokens,
+$0.0112, 25 s for the whole workflow.
 
 ## Contents
 
@@ -313,6 +316,11 @@ and one retry.
 
 **Suggestion blocks lost indentation.** Early suggested fixes were stripped of leading whitespace,
 which would have broken Python code on "Commit suggestion". Fixed and covered by tests.
+
+**Multi-line fixes rendered as prose.** On the first real PR (screenshot above), the SQL-injection
+fix came back as two unfenced code lines and was posted as plain text instead of a code block,
+because the code/prose heuristic only checked single-line fixes. Fixed and covered by tests; the
+screenshot shows the review from before the fix.
 
 Known limitations, not yet fixed:
 
