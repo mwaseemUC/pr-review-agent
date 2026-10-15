@@ -134,7 +134,7 @@ flowchart LR
        if: ${{ !github.event.pull_request.draft }}
        runs-on: ubuntu-latest
        steps:
-         - uses: mwaseemUC/pr-review-agent@v1
+         - uses: mwaseemUC/pr-review-agent@main
            with:
              anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
    ```

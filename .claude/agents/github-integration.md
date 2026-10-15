@@ -34,7 +34,7 @@ You own the GitHub integration of pr-review-agent. Read `CLAUDE.md` first; the c
 - **.github/workflows/pr-review.yml**: dogfood the action on this repo's PRs (`uses: ./`).
   Use `pull_request` (not `pull_request_target`) with `permissions: contents: read, pull-requests: write`.
   Skip when the secret is missing (PRs from forks).
-- **examples/pr-review.yml**: the copy-paste workflow for other repos (`uses: mwaseemUC/pr-review-agent@v1`),
+- **examples/pr-review.yml**: the copy-paste workflow for other repos (`uses: mwaseemUC/pr-review-agent@main`),
   with comments explaining the secret and permissions.
 - Pin third-party actions to a major version tag (`actions/checkout@v4`, `actions/setup-python@v5`).
 
